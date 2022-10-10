@@ -11,7 +11,7 @@ public class Controller {
 	@GetMapping("health")
 	public String healthCheck()
 	{
-		return "Application is up and running...";
+		return "Application is up and running...!!";
 	}
 }
 
