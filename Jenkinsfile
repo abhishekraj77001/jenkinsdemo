@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+    environment {
+		DOCKER_HUB_LOGIN=credentials('dockerhub-cred')
+	}
 
     stages {
         stage ('Maven Compile Stage') {
@@ -27,6 +31,21 @@ pipeline {
 			steps {
 				echo 'building docker image'
 				sh 'docker build -t abhishekraj76578/jenkinsdemo:latest .'
+			}
+		}
+		stage('DockerHub Login') {
+
+			steps {
+				echo 'logging to docker hub'
+				sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
+			}
+		}
+
+		stage('Push TO Dockerhub') {
+
+			steps {
+				echo 'pushing docker image to dockerhub'
+				sh 'docker push abhishekraj76578/jenkinsdemo:latest'
 			}
 		}
     }
