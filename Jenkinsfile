@@ -30,7 +30,7 @@ pipeline {
 
 			steps {
 				echo 'building docker image'
-				sh 'docker build -t abhishekraj76578/jenkinsdemo:latest .'
+				sh 'docker build -t abhishekraj7658/jenkinsdemo:latest .'
 			}
 		}
 		stage('DockerHub Login') {
@@ -45,7 +45,7 @@ pipeline {
 
 			steps {
 				echo 'pushing docker image to dockerhub'
-				sh 'docker push abhishekraj76578/jenkinsdemo:latest'
+				sh 'docker push abhishekraj7658/jenkinsdemo:latest'
 			}
 		}
     }
