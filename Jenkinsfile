@@ -21,5 +21,13 @@ pipeline {
                 }
             }
         }
+        
+        stage('Docker Build') {
+
+			steps {
+				echo 'building docker image'
+				sh 'docker build -t abhishekraj76578/jenkinsdemo:latest .'
+			}
+		}
     }
 }
