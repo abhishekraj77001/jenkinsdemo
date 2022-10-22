@@ -26,15 +26,6 @@ pipeline {
             }
         }
         
-        
-        stage('Docker Build') {
-
-			steps {
-				echo 'building docker image'
-				sh 'docker build -t abhishekraj7658/jenkinsdemo:latest .'
-			}
-		}
-		
         stage('Docker Build') {
 
 			steps {
@@ -58,16 +49,6 @@ pipeline {
 			}
 		}
 		
-		stage ('Deploy') {
-    		steps{
-       			 sshagent(credentials : ['awsjenkinsdemos1']) {
-            		sh 'ssh -o StrictHostKeyChecking=no ec2-user@43.204.101.27 uptime'
-            		sh 'ssh -v ec2-user@43.204.101.27'
-  					echo 'conecting...ec2'
-  					sh pwd
-        }
-    }
-}
     }
     post {
 		always {
