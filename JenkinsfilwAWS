@@ -7,7 +7,7 @@ pipeline{
 		stage ('AWS  Deploy') {
     		steps{
        			 sshagent(credentials : ['awsjenkinsdemos1']) {
-       			 	echo 'conecting...ec2'
+       			 	echo 'conecting...ec2..1'
             		sh 'ssh -o StrictHostKeyChecking=no ec2-user@13.127.249.47 uptime'
             		sh 'ssh -v ec2-user@13.127.249.47'
   					echo 'conecting...ec2'
